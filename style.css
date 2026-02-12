@@ -1,3 +1,12 @@
+:root {
+    --pink: #ff758c;
+    --dark-blue: #0f0c29;
+}
+
+
+
+
+
 /* Configuración básica del cuerpo */
 body {
     margin: 0;
@@ -40,6 +49,40 @@ body {
 .header-fijo span {
     color: #FF0F1F;
 }
+
+     h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: var(--pink);
+            margin-bottom: 10px;
+        }
+
+        /* Contador */
+        .counter-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .counter-box {
+            background: rgba(255, 117, 140, 0.2);
+            padding: 10px;
+            border-radius: 10px;
+            min-width: 60px;
+        }
+
+        .counter-box span {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .counter-box label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+        }
+
 
 .contenedor-scroll {
     padding-top: 120px; /* Margen para que el texto no empiece debajo del header */
@@ -101,6 +144,31 @@ body {
 
 /*decoracion de css*/
 
+
+
+
+        .footer-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: var(--pink);
+            margin-top: 20px;
+        }
+
+        /* Alerta de comida - Estilo Carlos */
+        .food-alert {
+            background: rgba(255, 255, 255, 0.1);
+            border-left: 5px solid var(--pink);
+            padding: 20px;
+            border-radius: 0 15px 15px 0;
+            margin: 30px 0;
+            text-align: left;
+        }
+.contenedor-scroll {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+        }
 
 /* Solo añade esto al final de tu style.css */
 .snowflake.heart {
