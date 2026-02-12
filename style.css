@@ -1,0 +1,431 @@
+:root {
+    --pink: #ff758c;
+    --dark-blue: #0f0c29;
+}
+
+
+
+
+
+/* Configuración básica del cuerpo */
+body {
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(circle, #1b2735 0%, #090a0f 100%);
+    min-height: 100%;
+    overflow-x: hidden; /* Evita scroll lateral */
+    
+    
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; /* Un poco más grande para lucir los detalles */
+    line-height: 1.6;
+    color: #fff; /* Un gris oscuro es más suave que el negro puro */
+}
+
+.header-fijo {
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(1px); /* Efecto cristal */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    animation: aparecer 3s ease-out both 7.5s;
+}
+
+.header-fijo h1 {
+    font-family: 'Georgia', serif;
+    font-size: 1.8rem;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.header-fijo span {
+    color: #FF0F1F;
+}
+
+     h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: var(--pink);
+            margin-bottom: 10px;
+        }
+
+        /* Contador */
+        .counter-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .counter-box {
+            background: rgba(255, 117, 140, 0.2);
+            padding: 10px;
+            border-radius: 10px;
+            min-width: 60px;
+        }
+
+        .counter-box span {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .counter-box label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+        }
+
+
+.contenedor-scroll {
+    padding-top: 120px; /* Margen para que el texto no empiece debajo del header */
+    padding-bottom: 100px; /* Espacio para que el suelo de nieve no tape el final */
+    display: flex;
+    justify-content: center;
+}
+
+.carta-cristal {
+    opacity: 0;
+    width: 80%;
+    max-width: 700px;
+    padding: 40px;
+    border-radius: 20px;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    text-align: center;
+    animation:  aparecer 3s ease-out both 7.5s;
+    }
+
+.content {
+    text-align: center;
+    z-index: 10;
+}
+
+/* Estilo de cada copo de nieve */
+.snowflake {
+    position: fixed;
+    top: -20px;
+    color: white;
+    user-select: none;
+    pointer-events: none;
+    z-index: 5;
+    animation: fall linear;
+}
+
+/* Animación de caída libre */
+@keyframes fall {
+    to {
+        transform: translateY(110vh);
+    }
+}
+
+
+/* El suelo de nieve que va creciendo */
+#snow-ground {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0px; /* Empieza en cero */
+    background: white;
+    /* El blur crea el efecto de nieve amontonada suave */
+    filter: blur(10px); 
+    opacity: 0.5;
+    z-index: 6;
+    border-radius: 100% 100% 0 0 / 30px 30px 0 0;
+}
+
+/*decoracion de css*/
+
+
+
+
+        .footer-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: var(--pink);
+            margin-top: 20px;
+        }
+
+        /* Alerta de comida - Estilo Carlos */
+        .food-alert {
+            background: rgba(255, 255, 255, 0.1);
+            border-left: 5px solid var(--pink);
+            padding: 20px;
+            border-radius: 0 15px 15px 0;
+            margin: 30px 0;
+            text-align: left;
+        }
+.contenedor-scroll {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+        }
+
+/* Solo añade esto al final de tu style.css */
+.snowflake.heart {
+    color: #ff4d6d; /* Color rosado/rojo para los corazones */
+    text-shadow: 0 0 5px rgba(255, 77, 109, 0.5); /* Brillo suave */
+}
+
+
+:root {
+  --color-tallo: #2d5a27;
+  --rosa-oscuro: #ff4d6d;
+  --rosa-medio: #ff758f;
+  --rosa-claro: #ffb1c1;
+}
+
+.contenedor-magico {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 3000;
+  pointer-events: none;
+    animation: desaparecerFlor 2s ease forwards 7s; 
+}
+
+/* Tallo centrado */
+.tallo-real {
+  width: 10px;
+  height: 0;
+  background: linear-gradient(to top, #1b4d1b, #4CAF50, #81c784);
+  box-shadow: 0 0 15px rgba(76, 175, 80, 0.4);
+  border-radius: 20px;
+  position: relative;
+  animation: crecerTallo 2.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* El secreto del encuadre: La cabeza está fija al tope del tallo */
+.cabeza-alineada {
+  position: absolute;
+  bottom: 250px; /* Misma altura final del tallo */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0; height: 0;
+}
+
+.petalo-pro {
+  position: absolute;
+  bottom: 0; 
+  left: 50%;
+    
+    /* CAMBIO 1: Forma de diamante/loto en lugar de círculo */
+  
+  
+  /* CAMBIO 2: Sombra interna (inset) para crear profundidad 3D */
+  box-shadow: inset 0px -20px 30px rgba(0,0,0,0.3), 
+              inset 0px 10px 10px rgba(255,255,255,0.2);
+    
+    /* CAMBIO 1: Forma de gota orgánica (Curva en lugar de líneas rectas) */
+  /* Elipse que es más ancha arriba y se cierra abajo */
+  clip-path: ellipse(48% 50% at 50% 50%);
+  
+  /* CAMBIO 2: Suavizado de bordes para que no se vea "cortado" */
+  border-radius: 50% 50% 20% 20%; 
+  
+  /* CAMBIO 3: Sombra interna más suave para redondear el pétalo */
+  box-shadow: inset 0px -10px 20px rgba(0,0,0,0.2), 
+              inset 0px 5px 15px rgba(255,255,255,0.3);
+
+  animation: bloomPro 2.5s cubic-bezier(0.5, 1.5, 0.5, 1) forwards;
+    
+  transform-origin: bottom center;
+  
+  opacity: 0;
+  
+}
+
+/* Configuración de capas sobrepuestas */
+.grande { 
+  width: 120px; height: 180px; 
+  background: radial-gradient(circle, var(--rosa-oscuro), #880e4f);
+  margin-left: -60px; /* Mitad del ancho para centrar */
+  animation-delay: 2s; 
+}
+
+.media { 
+  width: 90px; height: 130px; 
+  background: radial-gradient(circle, var(--rosa-medio), #c2185b);
+  margin-left: -45px;
+  z-index: 10;
+  animation-delay: 2.5s; 
+}
+
+.chica { 
+  width: 60px; height: 90px; 
+  background: radial-gradient(circle, var(--rosa-claro), #f06292);
+  margin-left: -30px;
+  z-index: 20;
+  animation-delay: 3s; 
+}
+
+/* Centro radiante */
+.nucleo-brillante {
+  position: absolute;
+  width: 30px; height: 30px;
+  /* CAMBIO 1: Brillo radial blanco a amarillo */
+  background: radial-gradient(circle, #fff, #ffeb3b, #fbc02d);
+  
+  /* CAMBIO 2: Doble sombra para efecto de lámpara */
+  box-shadow: 0 0 40px #fff, 0 0 70px #fff176;
+  
+  z-index: 30;
+  transform: translate(-50%, 50%) scale(0);
+  bottom: 0; left: 0;
+  
+  /* CAMBIO 3: Nueva animación de latido constante */
+  animation: aparecerCentro 1.5s forwards 4.5s, latido 2s infinite 6s;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+/* Animaciones corregidas */
+@keyframes crecerTallo { to { height: 250px; } }
+
+@keyframes aparecerCentro { to { opacity: 1; transform: translate(-50%, 50%) scale(1); } }
+
+@keyframes desaparecerFlor {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.9); /* Un ligero encogimiento mientras desaparece */
+        visibility: hidden;
+    }
+}
+
+@keyframes aparecer {
+    0% {
+        transform: scale(0.6);
+    }
+    50%{
+        opacity: 0.2;
+        transform: scale(0.7);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Contenedor de los rayos */
+.rayos-luz {
+     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200vw;
+    height: 200vw;
+    
+    /* GRADIENTE COMPLEJO: Muchos haces con diferentes grosores y opacidades */
+    background: conic-gradient(
+        from 0deg at 50% 50%,
+        transparent 0deg,
+        rgba(255, 255, 150, 0.3) 2deg,
+        rgba(255, 255, 150, 0.3) 10deg, /* Haz 1: Fuerte */
+        rgba(255, 255, 150, 0.3) 18deg,
+        transparent 25deg,
+        
+        rgba(255, 255, 150, 0.3) 40deg, /* Haz 2: Medio */
+        transparent 55deg,
+        
+        rgba(255, 255, 150, 0.3) 70deg, /* Haz 3: Débil */
+        transparent 85deg,
+        
+        rgba(255, 255, 150, 0.3) 105deg, /* Haz 4: Muy fuerte */
+        rgba(255, 255, 150, 0.3) 120deg,
+        transparent 140deg,
+        
+        rgba(255, 255, 150, 0.3) 160deg, /* Haz 5: Suave */
+        transparent 180deg,
+        
+        rgba(255, 255, 150, 0.3) 210deg, /* Haz 6: Definido */
+        transparent 230deg,
+        
+        rgba(255, 255, 150, 0.3) 255deg, /* Haz 7: Ancho */
+        transparent 280deg,
+        
+        rgba(255, 255, 150, 0.3) 310deg, /* Haz 8: Brillante */
+        rgba(255, 255, 150, 0.3) 330deg,
+        transparent 360deg
+    );
+
+    /* EFECTO DE PROFUNDIDAD: Solo se ve luz cerca de la flor y se esfuma */
+    mask-image: radial-gradient(circle at center, 
+        black 5%, 
+        rgba(0,0,0,0.8) 20%, 
+        transparent 65%
+    );
+    -webkit-mask-image: radial-gradient(circle at center, 
+        black 5%, 
+        rgba(0,0,0,0.8) 20%, 
+        transparent 65%
+    );
+
+    filter: blur(12px) contrast(1.2); /* El contraste resalta los haces */
+    z-index: -1;
+    
+    opacity: 0;
+    
+    
+    
+    /* Animación: Rotación muy lenta para que no maree */
+    animation: rotarRayos 50s linear infinite, 
+        aparecerRayos 3s ease forwards 4s;
+    pointer-events: none;
+    
+}
+
+@keyframes aparecerRayos {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1; /* O 0.8 si prefieres que sean sutiles */
+    }
+}
+
+.rayos-luz::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: inherit; /* Copia el gradiente */
+    transform: rotate(45deg) scale(1.1); /* Lo desfasa */
+    opacity: 0.5;
+    filter: blur(25px); /* Más difuso para rellenar huecos */
+}
+
+/* Animación para que los rayos giren lentamente */
+@keyframes rotarRayos {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Efecto de pulso de vida */
+@keyframes latido {
+  0%, 100% { transform: translate(-50%, 50%) scale(1); opacity: 1; }
+  50% { transform: translate(-50%, 50%) scale(1.15); opacity: 0.8; }
+}
+
+/* Apertura con efecto elástico */
+@keyframes bloomPro {
+  0% { transform: rotate(calc(var(--i) * 72deg)) scale(0); opacity: 0; }
+  100% { transform: rotate(calc(var(--i) * 72deg)) scale(1); opacity: 0.95; }
+}
