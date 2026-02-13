@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esperando el momento...</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Orbitron:wght@500&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- ESTILOS GENERALES --- */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: #050505; /* Fondo negro casi puro */
+            overflow: hidden; /* Para que no haya scroll por la lluvia de corazones */
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        /* Efecto de partículas (Lluvia de fondo) */
+        .particula {
+            position: absolute;
+            top: -10px;
+            color: #ff007f;
+            opacity: 0.8;
+            user-select: none;
+            z-index: 0;
+            animation: caer linear forwards;
+            text-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f;
+        }
+
+        @keyframes caer {
+            to {
+                transform: translateY(105vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* --- TARJETA PRINCIPAL (GLASSMORPHISM NEÓN) --- */
+        .tarjeta {
+            position: relative;
+            z-index: 10;
+            background: rgba(20, 20, 20, 0.6); /* Oscuro y transparente */
+            backdrop-filter: blur(15px);
+            padding: 50px 40px;
+            border-radius: 40px;
+            border: 2px solid rgba(255, 0, 128, 0.5);
+            box-shadow: 0 0 30px rgba(255, 0, 128, 0.4), inset 0 0 20px rgba(255, 0, 128, 0.2);
+            text-align: center;
+            max-width: 800px;
+            width: 90%;
+        }
+
+        /* Corazón pixelado/brillante arriba */
+        .corazon-top {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 15px #ff0055);
+            animation: latido 1.5s infinite;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            margin: 10px 0;
+            background: linear-gradient(to right, #ff9a9e, #ff007f, #ff9a9e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(255, 0, 128, 0.5);
+        }
+
+        p.subtitulo {
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            color: #ffccdd;
+            text-shadow: 0 0 5px #ff007f;
+        }
+
+        /* --- CONTADOR --- */
+        #contador {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .circulo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #ff007f;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 15px #ff007f, inset 0 0 15px #ff007f; /* Neón Rosa */
+            position: relative;
+        }
+
+        .numero {
+            font-family: 'Orbitron', sans-serif; /* Letra tipo digital */
+            font-size: 2.5rem;
+            color: #00ffcc; /* Turquesa brillante como en la imagen */
+            text-shadow: 0 0 10px #00ffcc;
+        }
+
+        .etiqueta {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            margin-top: 5px;
+            color: #fff;
+        }
+
+        /* Animación del latido */
+        @keyframes latido {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            .circulo { width: 70px; height: 70px; }
+            .numero { font-size: 1.5rem; }
+            #contador { gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="lluvia"></div>
+
+    <div class="tarjeta">
+        <div class="corazon-top">❤️</div>
+        <h1>¡Para Siempre Contigo!</h1>
+        <p class="subtitulo">NUESTRO MOMENTO ESPECIAL LLEGA EN...</p>
+        
+        <div id="contador">
+            <div class="circulo">
+                <span class="numero" id="dias">00</span>
+                <span class="etiqueta">Días</span>
+            </div>
+            <div class="circulo">
+                <span class="numero" id="horas">00</span>
+                <span class="etiqueta">Hrs</span>
+            </div>
+            <div class="circulo">
+                <span class="numero" id="minutos">00</span>
+                <span class="etiqueta">Min</span>
+            </div>
+            <div class="circulo">
+                <span class="numero" id="segundos">00</span>
+                <span class="etiqueta">Seg</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* --- LÓGICA DEL CONTADOR --- */
+        // Ajusta el año si es necesario. He puesto 2026 basado en la fecha actual de tu sistema.
+        const fechaObjetivo = new Date("February 14, 2026 22:00:00").getTime();
+        const urlDestino = "index.html"; // CAMBIA ESTO POR TU LINK
+
+        const intervalo = setInterval(() => {
+            const ahora = new Date().getTime();
+            const distancia = fechaObjetivo - ahora;
+
+            const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+            // Actualizar HTML con ceros a la izquierda (01, 05, etc)
+            document.getElementById("dias").innerText = dias.toString().padStart(2, '0');
+            document.getElementById("horas").innerText = horas.toString().padStart(2, '0');
+            document.getElementById("minutos").innerText = minutos.toString().padStart(2, '0');
+            document.getElementById("segundos").innerText = segundos.toString().padStart(2, '0');
+
+            // Redirección
+            if (distancia < 0) {
+                clearInterval(intervalo);
+                window.location.href = urlDestino;
+            }
+        }, 1000);
+
+        /* --- GENERADOR DE LLUVIA DE FLORES Y CORAZONES --- */
+        function crearParticula() {
+            const contenedor = document.getElementById('lluvia');
+            const particula = document.createElement('div');
+            particula.classList.add('particula');
+            
+            // Elegir aleatoriamente entre corazón o flor
+            const simbolos = ['❤️', '🌸', '✨', '💖']; 
+            particula.innerText = simbolos[Math.floor(Math.random() * simbolos.length)];
+
+            // Posición horizontal aleatoria
+            particula.style.left = Math.random() * 100 + 'vw';
+            
+            // Tamaño aleatorio
+            particula.style.fontSize = Math.random() * 20 + 10 + 'px';
+            
+            // Duración de caída aleatoria
+            const duracion = Math.random() * 3 + 2; // entre 2 y 5 segundos
+            particula.style.animationDuration = duracion + 's';
+
+            contenedor.appendChild(particula);
+
+            // Eliminar partícula después de que caiga para no saturar memoria
+            setTimeout(() => {
+                particula.remove();
+            }, duracion * 1000);
+        }
+
+        // Crear una partícula cada 100 milisegundos
+        setInterval(crearParticula, 100);
+
+    </script>
+</body>
+</html>
